@@ -22,15 +22,28 @@ class FormUser extends Component{
 
     handleOnsubmit=(e)=>{
         e.preventDefault();
-        console.log(this.state);
+
         
     }
 
+    
+
     render(){
+       
+        
+        const {User} = this.props;
+        
+        
         return(
             <>
                 <form onSubmit={(e)=>this.handleOnsubmit(e)}>
-            
+              
+                {User.map((user)=>(
+                    <li key={user.id}>
+                        {user.name}
+                        {user.age}
+                    </li>
+                ))}
                 <h2>login {this.state.username}</h2>
                 <label>Username :</label>
                 <input
