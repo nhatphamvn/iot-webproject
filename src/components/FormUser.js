@@ -7,7 +7,7 @@ class FormUser extends Component{
     this.state = {
       username: '',
       email: '',
-      password: '',
+      age: '',
       isLogin: true // true: login form, false: signup form
     };
   }
@@ -22,8 +22,17 @@ class FormUser extends Component{
 
     handleOnsubmit=(e)=>{
         e.preventDefault();
-
+        this.props.handleAddUsers({
+            id: Math.floor(Math.random() * 100) +"ramdom",
+            name:this.state.username,
+            age:this.state.age
+        })
         
+    }
+    handleShowHide=()=>{
+        this.setState({
+            isLogin: !this.state.isLogin
+        })
     }
 
     
@@ -33,18 +42,13 @@ class FormUser extends Component{
         
         const {User} = this.props;
         
+
         
         return(
             <>
                 <form onSubmit={(e)=>this.handleOnsubmit(e)}>
               
-                {User.map((user)=>(
-                    <li key={user.id}>
-                        {user.name}
-                        {user.age}
-                    </li>
-                ))}
-                <h2>login {this.state.username}</h2>
+                <h2> List Users: </h2>
                 <label>Username :</label>
                 <input
                     name='username'
@@ -53,18 +57,33 @@ class FormUser extends Component{
                     value={this.state.username}
                     onChange={this.handleOnChange}
 
-                /><br/>
-                <label>Password :</label>
+                /> 
+                <label> AGE :</label>
                 <input
-                    name='password'
+                    name='age'
                     type='text'
-                    placeholder='Username'
-                    value={this.state.password}
+                    placeholder='Age'
+                    value={this.state.age}
                     onChange={this.handleOnChange}
                 />
 
                 <button >Submit</button>
+
+                <hr/>
+
+                {
+                    this.state.isLogin && <div>
+                    {User.map((user)=>(
+                    <li key={user.id}>
+                        {user.name} {user.age}
+                    </li>
+                ))}
+                    </div>
+                }
                 
+                <button onClick={()=>this.handleShowHide()}>
+                    Hide
+                </button>
                 
 
 
