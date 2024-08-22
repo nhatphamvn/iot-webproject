@@ -1,5 +1,6 @@
 import React, { Component } from "react";
-
+import './FormUser.scss'
+import logo from './../logo.svg'
 class FormUser extends Component{
 
     constructor(props) {
@@ -45,9 +46,11 @@ class FormUser extends Component{
 
         
         return(
-            <>
+            <div className="formUser-infor">
+
+                <img src={logo}/>
                 <form onSubmit={(e)=>this.handleOnsubmit(e)}>
-              
+
                 <h2> List Users: </h2>
                 <label>Username :</label>
                 <input
@@ -90,10 +93,8 @@ class FormUser extends Component{
 
                 
                 </form>
-            
-            
-            
-            </>
+
+            </div>
 
         )
 
