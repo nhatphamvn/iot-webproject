@@ -27,6 +27,10 @@ class MyComponent extends React.Component{
       localStorage.setItem('Users', JSON.stringify(this.state.Users));
     });
   }
+  // handleDeleteUser=(UserId)=>{
+  //   const NewUsers = this.state.Users.filter(item => item.id !== UserId);
+   
+  // }
     
 
   render() {
@@ -34,7 +38,8 @@ class MyComponent extends React.Component{
     return (
       <>
         <FormUser User={this.state.Users}
-                  handleAddUsers={this.handleAddUsers}            
+                  handleAddUsers={this.handleAddUsers}
+                  handleDeleteUser={this.handleDeleteUser}            
         />
       </>
     );

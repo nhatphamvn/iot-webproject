@@ -1,47 +1,56 @@
-import React, { Component } from "react";
+import React, {  useState } from "react";
 import './FormUser.scss'
 import logo from './../logo.svg'
-class FormUser extends Component{
+// class FormUser extends Component{
 
-    constructor(props) {
-    super(props);
-    this.state = {
-      username: '',
-      email: '',
-      age: '',
-      isLogin: true // true: login form, false: signup form
-    };
-  }
-   handleOnChange=(e)=>{
-    const {name, value} = e.target
-    this.setState({
-        [name]: value
-    })
-
-    
-    }
-
-    handleOnsubmit=(e)=>{
-        e.preventDefault();
-        this.props.handleAddUsers({
-            id: Math.floor(Math.random() * 100) +"ramdom",
-            name:this.state.username,
-            age:this.state.age
-        })
-        
-    }
-    handleShowHide=()=>{
-        this.setState({
-            isLogin: !this.state.isLogin
-        })
-    }
+//     constructor(props) {
+//     super(props);
+//     this.state = {
+//       username: '',
+//       email: '',
+//       age: '',
+//       isLogin: true // true: login form, false: signup form
+//     };
+//   }
+//    handleOnChange=(e)=>{
+//     const {name, value} = e.target
+//     this.setState({
+//         [name]: value
+//     })
 
     
+//     }
 
-    render(){
-       
-        
-        const {User} = this.props;
+//     handleShowHide=()=>{
+    //         this.setState({
+        //             isLogin: !this.state.isLogin
+        //         })
+        //     }
+const FormUser =(props)=>{
+
+    const [hideShow,setHideShow] = useState(true);
+            // handleOnsubmit=(e)=>{
+            //     e.preventDefault();
+            //     this.props.handleAddUsers({
+            //         id: Math.floor(Math.random() * 100) +"-ramdom",
+            //         name:username,
+            //         age:age
+            //     })
+                
+            // }
+            //    handleOnChange=(e)=>{
+            // const {name, value} = e.target
+            // this.setState({
+            //     [name]: value
+            // })
+    console.log(hideShow);
+    
+    const handleHideShow=()=>{
+  
+        setHideShow(!hideShow)
+    }
+    
+        const {User} = props;
         
 
         
@@ -49,7 +58,7 @@ class FormUser extends Component{
             <div className="formUser-infor">
 
                 <img src={logo}/>
-                <form onSubmit={(e)=>this.handleOnsubmit(e)}>
+                <form >
 
                 <h2> List Users: </h2>
                 <label>Username :</label>
@@ -57,8 +66,8 @@ class FormUser extends Component{
                     name='username'
                     type='text'
                     placeholder='Username'
-                    value={this.state.username}
-                    onChange={this.handleOnChange}
+             
+               
 
                 /> 
                 <label> AGE :</label>
@@ -66,40 +75,34 @@ class FormUser extends Component{
                     name='age'
                     type='text'
                     placeholder='Age'
-                    value={this.state.age}
-                    onChange={this.handleOnChange}
+              
                 />
 
                 <button >Submit</button>
 
                 <hr/>
-
+         
+                <span onClick={()=>handleHideShow()}>Hide</span>
                 {
-                    this.state.isLogin && <div>
+                    hideShow && <div>
                     {User.map((user)=>(
                     <li key={user.id}>
                         {user.name} {user.age}
+                       
                     </li>
-                ))}
+                    
+                    ))}
                     </div>
                 }
-                
-                <button onClick={()=>this.handleShowHide()}>
-                    Hide
-                </button>
-                
 
-
-
-                
                 </form>
 
             </div>
 
         )
-
     }
+//     }
 
 
-}
+// // }
 export default FormUser
