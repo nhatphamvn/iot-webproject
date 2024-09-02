@@ -1,4 +1,4 @@
-
+import Header from './components/Header';
 import './App.scss';
 
 const App = () => {
@@ -6,8 +6,10 @@ const App = () => {
 
   return (
       <>
-        <h4>Hello World</h4>
-        <button>Submit</button>
+      <div className='app-container'>
+
+      </div>
+        <Header/>
       </>
   );
 }
