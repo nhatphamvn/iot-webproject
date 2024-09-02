@@ -29,20 +29,29 @@ import logo from './../logo.svg'
 const FormUser =(props)=>{
 
     const [hideShow,setHideShow] = useState(true);
-            // handleOnsubmit=(e)=>{
-            //     e.preventDefault();
-            //     this.props.handleAddUsers({
-            //         id: Math.floor(Math.random() * 100) +"-ramdom",
-            //         name:username,
-            //         age:age
-            //     })
-                
-            // }
-            //    handleOnChange=(e)=>{
-            // const {name, value} = e.target
-            // this.setState({
-            //     [name]: value
-            // })
+    const [username,setUsername] = useState('');
+    const [age , setAge] = useState(0);
+
+
+    
+
+       const handleOnsubmit = (e) => {
+        e.preventDefault();
+        const newUser = {
+            id: Math.floor(Math.random() * 100) + "-random",
+            name: username,
+            age: age
+        };
+        props.handleAddUsers(newUser);  // Truyền object newUser lên cha
+        };
+        const handleOnChange = (e) => {
+        const { name, value } = e.target;
+        if (name === 'username') {
+            setUsername(value);
+        } else if (name === 'age') {
+            setAge(value);
+        }
+        };
     console.log(hideShow);
     
     const handleHideShow=()=>{
@@ -58,7 +67,7 @@ const FormUser =(props)=>{
             <div className="formUser-infor">
 
                 <img src={logo}/>
-                <form >
+                <form onSubmit={()=>handleOnsubmit()}>
 
                 <h2> List Users: </h2>
                 <label>Username :</label>
@@ -66,8 +75,8 @@ const FormUser =(props)=>{
                     name='username'
                     type='text'
                     placeholder='Username'
-             
-               
+                    value={username}
+                    onChange={handleOnChange}
 
                 /> 
                 <label> AGE :</label>
@@ -75,7 +84,8 @@ const FormUser =(props)=>{
                     name='age'
                     type='text'
                     placeholder='Age'
-              
+                    value={age}
+                    onChange={handleOnChange}
                 />
 
                 <button >Submit</button>
@@ -88,7 +98,7 @@ const FormUser =(props)=>{
                     {User.map((user)=>(
                     <li key={user.id}>
                         {user.name} {user.age}
-                       
+                        
                     </li>
                     
                     ))}
