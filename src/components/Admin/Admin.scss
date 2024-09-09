@@ -1,0 +1,26 @@
+.admin-container{
+    display: flex;
+    .admin-sidebar{
+
+
+        .pro-sidebar {
+            height: 100vh !important;
+        }
+
+        .pro-inner-list-item{
+            opacity: 0.5;   
+            color: yellow;
+            
+            
+        }
+
+    }
+    .admin-content{
+        span{
+            margin: 40px;
+ 
+        }
+    }
+
+
+}
