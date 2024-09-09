@@ -11,7 +11,8 @@ import {
 
 import { FaTachometerAlt, FaGem, FaList, FaGithub, FaRegLaughWink, FaHeart } from 'react-icons/fa';
 import sidebarBg from '../../assets/img-sidebar.jpg';
-
+import { BiBookReader } from "react-icons/bi";
+import { FaAngleDown } from "react-icons/fa";
 
 const Sidebar = (props) => {
     const { image, collapsed, toggled, handleToggleSidebar } = props;
@@ -37,28 +38,25 @@ const Sidebar = (props) => {
                             whiteSpace: 'nowrap',
                         }}
                     >
+                        <BiBookReader size={30} color='#FFC8FB' />
                         Pham Van Nhat
                     </div>
                 </SidebarHeader>
 
                 <SidebarContent>
                     <Menu iconShape="circle">
-                        <MenuItem
-                            icon={<FaTachometerAlt />}
-                            suffix={<span className="badge red">New</span>}
-                        >
-                            dashboard
+                        <MenuItem>
+                            Dashboard
                         </MenuItem>
-                        <MenuItem icon={<FaGem />}> components </MenuItem>
+                        <MenuItem > Components </MenuItem>
                     </Menu>
                     <Menu iconShape="circle">
-                        <SubMenu
-                            suffix={<span className="badge yellow">3</span>}
-                            icon={<FaRegLaughWink />}
-                        >
-                            <MenuItem> 1</MenuItem>
-                            <MenuItem> 2</MenuItem>
-                            <MenuItem> 3</MenuItem>
+         
+                        <SubMenu title={"Features"}>
+                            <FaAngleDown />
+                            <MenuItem>Quản Lí Người Dùng</MenuItem>
+                            <MenuItem>Quản Lí Bài Kiểm Tra</MenuItem>
+                            <MenuItem>Quản Lí Câu Hỏi</MenuItem>
                         </SubMenu>
 
                     </Menu>

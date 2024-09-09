@@ -1,6 +1,6 @@
 import Sidebar from "./Sidebar"
 import './Admin.scss'
-import { FaBars } from 'react-icons/fa';
+import { FaAlignJustify } from "react-icons/fa";
 import { useState } from "react"
 
 const Admin =(props)=>{
@@ -15,10 +15,11 @@ const Admin =(props)=>{
             </div>
 
             <div className="admin-content">
-                <FaBars onClick={() => setCollapsed(!collapsed)} />
+                <div className="btn-icons">
+                <FaAlignJustify size={20} onClick={() => setCollapsed(!collapsed)} />
+                </div>
             </div>
 
-            <h2>Admin</h2>
         </div>
     )
 }
