@@ -2,6 +2,7 @@ import Sidebar from "./Sidebar"
 import './Admin.scss'
 import { FaAlignJustify } from "react-icons/fa";
 import { useState } from "react"
+import { Outlet } from "react-router-dom";
 
 const Admin =(props)=>{
 
@@ -17,6 +18,9 @@ const Admin =(props)=>{
             <div className="admin-content">
                 <div className="btn-icons">
                 <FaAlignJustify size={20} onClick={() => setCollapsed(!collapsed)} />
+                </div>
+                <div className="admin-main">
+                    <Outlet/>
                 </div>
             </div>
 
