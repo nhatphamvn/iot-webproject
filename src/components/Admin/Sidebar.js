@@ -27,6 +27,7 @@ const Sidebar = (props) => {
                 onToggle={handleToggleSidebar}
             >
                 <SidebarHeader>
+                    
                     <div
                         style={{
                             padding: '24px',
@@ -40,6 +41,7 @@ const Sidebar = (props) => {
                         }}
                     >
                         <BiBookReader size={30} color='#FFC8FB' />
+                      
                         Pham Van Nhat
                     </div>
                 </SidebarHeader>
