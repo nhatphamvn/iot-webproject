@@ -2,12 +2,26 @@ import { useState } from 'react';
 import Button from 'react-bootstrap/Button';
 import Modal from 'react-bootstrap/Modal';
 import { FaPlusCircle } from "react-icons/fa";
+import axios from 'axios';
 
-const ModelCreateUser=()=> {
-  const [show, setShow] = useState(false);
 
-  const handleClose = () => setShow(false);
-  const handleShow = () => setShow(true);
+const ModelCreateUser=(props)=> {
+
+  const { show ,setShow} =props
+
+
+  const handleClose = () => {
+    setEmail("")
+    setPassword("")
+    setUsername("")
+    SetImage("")
+    setRole("USER")
+    SetPreImage("")
+    setShow(false)
+  
+  
+  };
+
 
   const [email,setEmail]= useState("")
   const [password,setPassword] = useState("")
@@ -26,11 +40,27 @@ const ModelCreateUser=()=> {
     }
     console.log("load",e.target.files[0])
   }
+
+
+  const handleSaveUser =async()=>{
+
+    const data = new FormData();
+        data.append('email', email);
+        data.append('password', password);
+        data.append('username', username);
+        data.append('role', role);
+        data.append('userImage', image);
+
+        const res = await axios.post('http://localhost:8081/api/v1/participant', data)
+
+        console.log(res);
+        setShow(false)
+  }
   return (
     <>
-      <Button variant="primary" onClick={handleShow}>
+      {/* <Button variant="primary" onClick={handleShow}>
        Add New Users
-      </Button>
+      </Button> */}
 
       <Modal show={show} onHide={handleClose} size='x' backdrop="static" className='model-add-user'>
         <Modal.Header closeButton>
@@ -93,7 +123,7 @@ const ModelCreateUser=()=> {
           <Button variant="secondary" onClick={handleClose}>
             Close
           </Button>
-          <Button variant="primary" onClick={handleClose}>
+          <Button variant="primary" onClick={handleSaveUser}>
             Save
           </Button>
         </Modal.Footer>
