@@ -3,7 +3,7 @@ import Button from 'react-bootstrap/Button';
 import Modal from 'react-bootstrap/Modal';
 import { FaPlusCircle } from "react-icons/fa";
 import axios from 'axios';
-
+import { toast } from 'react-toastify';
 
 const ModelCreateUser=(props)=> {
 
@@ -44,6 +44,25 @@ const ModelCreateUser=(props)=> {
 
   const handleSaveUser =async()=>{
 
+    const validateEmail = (email) => {
+      return String(email)
+      .toLowerCase()
+      .match(
+            /^(([^<>()[\]\\.,;:\s@"]+(\.[^<>()[\]\\.,;:\s@"]+)*)|.(".+"))@((\[[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\])|(([a-zA-Z\-0-9]+\.)+[a-zA-Z]{2,}))$/
+    );
+    };
+
+    const isValidateEmail = validateEmail(email)
+
+    if(!isValidateEmail){
+      toast.error("validated Email")
+      return;
+    }
+    if(!password){
+      toast.error("failed password")
+    }
+
+
     const data = new FormData();
         data.append('email', email);
         data.append('password', password);
@@ -53,8 +72,20 @@ const ModelCreateUser=(props)=> {
 
         const res = await axios.post('http://localhost:8081/api/v1/participant', data)
 
-        console.log(res);
-        setShow(false)
+        console.log(res.data);
+
+        if(res.data && res.data.EC === 0){
+          toast.success(res.data.EM)
+          handleClose()
+        }
+        if(res.data && res.data.EC !== 0){
+          toast.error(res.data.EM)
+
+        }
+
+
+
+    
   }
   return (
     <>
