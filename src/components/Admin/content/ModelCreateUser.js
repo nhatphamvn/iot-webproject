@@ -5,6 +5,8 @@ import { FaPlusCircle } from "react-icons/fa";
 import axios from 'axios';
 import { toast } from 'react-toastify';
 
+import {ApiCreateNewUser}  from '../../../service/ApiCreateNewUser'; 
+
 const ModelCreateUser=(props)=> {
 
   const { show ,setShow} =props
@@ -44,42 +46,37 @@ const ModelCreateUser=(props)=> {
 
   const handleSaveUser =async()=>{
 
-    const validateEmail = (email) => {
-      return String(email)
-      .toLowerCase()
-      .match(
-            /^(([^<>()[\]\\.,;:\s@"]+(\.[^<>()[\]\\.,;:\s@"]+)*)|.(".+"))@((\[[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\])|(([a-zA-Z\-0-9]+\.)+[a-zA-Z]{2,}))$/
-    );
-    };
+    // const validateEmail = (email) => {
+    //   return String(email)
+    //   .toLowerCase()
+    //   .match(
+    //         /^(([^<>()[\]\\.,;:\s@"]+(\.[^<>()[\]\\.,;:\s@"]+)*)|.(".+"))@((\[[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\])|(([a-zA-Z\-0-9]+\.)+[a-zA-Z]{2,}))$/
+    // );
+    // };
 
-    const isValidateEmail = validateEmail(email)
+    // const isValidateEmail = validateEmail(email)
 
-    if(!isValidateEmail){
-      toast.error("validated Email")
-      return;
-    }
-    if(!password){
-      toast.error("failed password")
-    }
+    // if(!isValidateEmail){
+    //   toast.error("validated Email")
+    //   return;
+    // }
+    // if(!password){
+    //   toast.error("failed password")
+    // }
 
 
-    const data = new FormData();
-        data.append('email', email);
-        data.append('password', password);
-        data.append('username', username);
-        data.append('role', role);
-        data.append('userImage', image);
+ 
 
-        const res = await axios.post('http://localhost:8081/api/v1/participant', data)
+        const data = await ApiCreateNewUser(email,password,username,role,image)
 
-        console.log(res.data);
+        console.log('res >>>>',data);
 
-        if(res.data && res.data.EC === 0){
-          toast.success(res.data.EM)
+        if(data && data.EC === 0){
+          toast.success(data.EM)
           handleClose()
         }
-        if(res.data && res.data.EC !== 0){
-          toast.error(res.data.EM)
+        if(data && data.EC !== 0){
+          toast.error(data.EM)
 
         }
 
