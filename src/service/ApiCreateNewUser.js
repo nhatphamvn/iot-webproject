@@ -14,6 +14,12 @@ const ApiCreateNewUser = (email,password,username,role,image)=>{
         return axios.post('api/v1/participant', data)
 
 }
+
+
+const getApiUserAll =()=>{
+        return axios.get('api/v1/participant/all')
+
+}
 export {
-    ApiCreateNewUser
+    ApiCreateNewUser,getApiUserAll
 }

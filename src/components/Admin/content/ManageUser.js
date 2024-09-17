@@ -1,6 +1,8 @@
 import ModelCreateUser from "./ModelCreateUser"
 import './ManagaUser.scss'
 import { useState } from "react"
+import TableUser from "./TableUser"
+
 
 const ManageUser =(props)=>{
 
@@ -21,8 +23,8 @@ const ManageUser =(props)=>{
                     <button className="btn btn-primary" onClick={()=> handleCreateUser()}>Add New User</button>
 
                 </div>
-                <div>
-                    table User
+                <div className="">
+                    <TableUser />
                 </div>
 
                 <ModelCreateUser

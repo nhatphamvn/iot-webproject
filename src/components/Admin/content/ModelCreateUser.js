@@ -46,23 +46,23 @@ const ModelCreateUser=(props)=> {
 
   const handleSaveUser =async()=>{
 
-    // const validateEmail = (email) => {
-    //   return String(email)
-    //   .toLowerCase()
-    //   .match(
-    //         /^(([^<>()[\]\\.,;:\s@"]+(\.[^<>()[\]\\.,;:\s@"]+)*)|.(".+"))@((\[[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\])|(([a-zA-Z\-0-9]+\.)+[a-zA-Z]{2,}))$/
-    // );
-    // };
+    const validateEmail = (email) => {
+      return String(email)
+      .toLowerCase()
+      .match(
+            /^(([^<>()[\]\\.,;:\s@"]+(\.[^<>()[\]\\.,;:\s@"]+)*)|.(".+"))@((\[[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\])|(([a-zA-Z\-0-9]+\.)+[a-zA-Z]{2,}))$/
+    );
+    };
 
-    // const isValidateEmail = validateEmail(email)
+    const isValidateEmail = validateEmail(email)
 
-    // if(!isValidateEmail){
-    //   toast.error("validated Email")
-    //   return;
-    // }
-    // if(!password){
-    //   toast.error("failed password")
-    // }
+    if(!isValidateEmail){
+      toast.error("validated Email")
+      return;
+    }
+    if(!password){
+      toast.error("failed password")
+    }
 
 
  
