@@ -1,25 +1,9 @@
-import { useEffect, useState } from "react"
-import { getApiUserAll } from "../../../service/ApiCreateNewUser"
-
-const TableUser = ()=>{
-
-    const [listUser,setListUser] = useState([]);
-
-    useEffect(()=>{
-       fecthData();
-        
-    },[])
-
-    const fecthData=async()=>{
-       let res = await getApiUserAll();
-        console.log(res);
-        
-        if(res.EC === 0){
-            setListUser(res.DT)
-        }
 
 
-    } 
+const TableUser = (props)=>{
+
+    const {listUser} = props
+
 
 
     return(

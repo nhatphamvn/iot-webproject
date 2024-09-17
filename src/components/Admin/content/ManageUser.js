@@ -1,12 +1,32 @@
 import ModelCreateUser from "./ModelCreateUser"
 import './ManagaUser.scss'
-import { useState } from "react"
 import TableUser from "./TableUser"
-
+import { useEffect, useState } from "react"
+import { getApiUserAll } from "../../../service/ApiCreateNewUser"
 
 const ManageUser =(props)=>{
 
     const [showModelUser,SetShowModelUser] = useState(false);
+
+    const [listUser,setListUser] = useState([]);
+
+    useEffect(()=>{
+       fecthData();
+        
+    },[])
+
+    const fecthData=async()=>{
+       let res = await getApiUserAll();
+        console.log(res);
+        
+        if(res.EC === 0){
+            setListUser(res.DT)
+        }
+
+
+    }
+    
+    
 
 
     const handleCreateUser =()=>{
@@ -24,12 +44,13 @@ const ManageUser =(props)=>{
 
                 </div>
                 <div className="">
-                    <TableUser />
+                    <TableUser listUser={listUser}/>
                 </div>
 
                 <ModelCreateUser
                     show={showModelUser}
                     setShow={SetShowModelUser}
+                    fetchData={fecthData}
                 />
             </div>
 

@@ -2,14 +2,14 @@ import { useState } from 'react';
 import Button from 'react-bootstrap/Button';
 import Modal from 'react-bootstrap/Modal';
 import { FaPlusCircle } from "react-icons/fa";
-import axios from 'axios';
 import { toast } from 'react-toastify';
 
 import {ApiCreateNewUser}  from '../../../service/ApiCreateNewUser'; 
 
 const ModelCreateUser=(props)=> {
 
-  const { show ,setShow} =props
+  const { show ,setShow,fetchData} =props
+
 
 
   const handleClose = () => {
@@ -74,6 +74,7 @@ const ModelCreateUser=(props)=> {
         if(data && data.EC === 0){
           toast.success(data.EM)
           handleClose()
+          await props.fetchData()
         }
         if(data && data.EC !== 0){
           toast.error(data.EM)
