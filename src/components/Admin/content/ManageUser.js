@@ -3,13 +3,13 @@ import './ManagaUser.scss'
 import TableUser from "./TableUser"
 import { useEffect, useState } from "react"
 import { getApiUserAll } from "../../../service/ApiCreateNewUser"
-
+import ModelUpdateUser from "./ModelUpdateUser"
 const ManageUser =(props)=>{
 
     const [showModelUser,SetShowModelUser] = useState(false);
-
+    const [showUpdateUser,SetShowUpdateUser] = useState(false)
     const [listUser,setListUser] = useState([]);
-
+    const [dataUpdate,setDataUpdate] = useState({})
     useEffect(()=>{
        fecthData();
         
@@ -26,7 +26,10 @@ const ManageUser =(props)=>{
 
     }
     
-    
+    const handleUpdateUser = (user)=>{
+        SetShowUpdateUser(true)
+        setDataUpdate(user)
+    }
 
 
     const handleCreateUser =()=>{
@@ -44,13 +47,22 @@ const ManageUser =(props)=>{
 
                 </div>
                 <div className="">
-                    <TableUser listUser={listUser}/>
+                    <TableUser 
+                    
+                    handleUpdateUser={handleUpdateUser}
+                    listUser={listUser}/>
                 </div>
 
                 <ModelCreateUser
                     show={showModelUser}
                     setShow={SetShowModelUser}
                     fetchData={fecthData}
+                />
+
+                <ModelUpdateUser 
+                    show={showUpdateUser}
+                    setShow={SetShowUpdateUser}
+                    dataUpdate={dataUpdate}
                 />
             </div>
 
