@@ -5,7 +5,7 @@ import { FaPlusCircle } from "react-icons/fa";
 import { toast } from 'react-toastify';
 import _ from 'lodash';
 
-import {ApiCreateNewUser}  from '../../../service/ApiCreateNewUser'; 
+import {ApiPutNewUser}  from '../../../service/ApiCreateNewUser'; 
 
 const ModelUpdateUser=(props)=> {
 
@@ -21,7 +21,7 @@ const ModelUpdateUser=(props)=> {
     setRole("USER")
     SetPreImage("")
     setShow(false)
-  
+    props.resetUpdateData()
   
   };
 
@@ -43,6 +43,7 @@ const ModelUpdateUser=(props)=> {
             SetPreImage(`data:image/jpeg;base64,${dataUpdate.image}`)
         }
     }
+    console.log('update',dataUpdate);
     
   },[dataUpdate])
 
@@ -74,20 +75,20 @@ const ModelUpdateUser=(props)=> {
       toast.error("validated Email")
       return;
     }
-    if(!password){
-      toast.error("failed password")
-    }
+    // if(!password){
+    //   toast.error("failed password")
+    // }
 
 
  
 
-        const data = await ApiCreateNewUser(email,password,username,role,image)
+        const data = await ApiPutNewUser(dataUpdate.id,username,role,image)
 
 
         if(data && data.EC === 0){
           toast.success(data.EM)
           handleClose()
-        //   await props.fetchData()
+          await props.fetchData()
         }
         if(data && data.EC !== 0){
           toast.error(data.EM)

@@ -15,11 +15,23 @@ const ApiCreateNewUser = (email,password,username,role,image)=>{
 
 }
 
+const ApiPutNewUser = (id,username,role,image)=>{
+    
+        const data = new FormData();
+    
+        data.append('id',id);
+        data.append('username', username);
+        data.append('role', role);
+        data.append('userImage', image);
+        return axios.put('api/v1/participant', data)
+
+}
+
 
 const getApiUserAll =()=>{
         return axios.get('api/v1/participant/all')
 
 }
 export {
-    ApiCreateNewUser,getApiUserAll
+    ApiCreateNewUser,getApiUserAll,ApiPutNewUser
 }
