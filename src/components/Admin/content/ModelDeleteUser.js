@@ -1,13 +1,30 @@
 import { useState } from 'react';
 import Button from 'react-bootstrap/Button';
 import Modal from 'react-bootstrap/Modal';
+import { deleteApiUser } from '../../../service/ApiCreateNewUser';
+import { toast } from 'react-toastify';
+
 
 function ModelDeleteUser(props) {
   const {show, setShow,dataDeleteUser} = props
   const handleClose = () => setShow(false);
 
-  const hanldeSumitDeleteUser = ()=>{
-    alert("me")
+  const hanldeSumitDeleteUser = async()=>{
+
+
+
+    const data = await deleteApiUser(dataDeleteUser.id)
+
+      if(data && data.EC === 0){
+          toast.success(data.EM)
+          handleClose()
+          await props.fetchData()
+        }
+        if(data && data.EC !== 0){
+          toast.error(data.EM)
+
+        }
+
   }
   
   return (

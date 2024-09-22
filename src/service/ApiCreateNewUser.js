@@ -32,6 +32,11 @@ const getApiUserAll =()=>{
         return axios.get('api/v1/participant/all')
 
 }
+
+const deleteApiUser =(userId)=>{
+        return axios.delete('api/v1/participant', {data: {id : userId}})
+
+}
 export {
-    ApiCreateNewUser,getApiUserAll,ApiPutNewUser
+    ApiCreateNewUser,getApiUserAll,ApiPutNewUser,deleteApiUser
 }
