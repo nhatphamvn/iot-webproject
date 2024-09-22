@@ -4,12 +4,16 @@ import TableUser from "./TableUser"
 import { useEffect, useState } from "react"
 import { getApiUserAll } from "../../../service/ApiCreateNewUser"
 import ModelUpdateUser from "./ModelUpdateUser"
+import ModelDeleteUser from "./ModelDeleteUser"
 const ManageUser =(props)=>{
 
     const [showModelUser,SetShowModelUser] = useState(false);
     const [showUpdateUser,SetShowUpdateUser] = useState(false)
+    const [showDeleteUser,setDeleteUser] = useState(false)
     const [listUser,setListUser] = useState([]);
     const [dataUpdate,setDataUpdate] = useState({})
+    const [dataDeleteUser,setDataDelete] = useState({});
+
     useEffect(()=>{
        fecthData();
         
@@ -29,6 +33,12 @@ const ManageUser =(props)=>{
     const handleUpdateUser = (user)=>{
         SetShowUpdateUser(true)
         setDataUpdate(user)
+    }
+
+    const handelDeleteUser =(user)=>{
+        setDeleteUser(true)
+        setDataDelete(user)
+
     }
 
 
@@ -52,7 +62,7 @@ const ManageUser =(props)=>{
                 </div>
                 <div className="">
                     <TableUser 
-                    
+                    handelDeleteUser={handelDeleteUser}
                     handleUpdateUser={handleUpdateUser}
                     listUser={listUser}/>
                 </div>
@@ -69,6 +79,13 @@ const ManageUser =(props)=>{
                     dataUpdate={dataUpdate}
                     fetchData={fecthData}
                     resetUpdateData={resetUpdateData}
+
+                />
+
+                <ModelDeleteUser
+                    show={showDeleteUser}
+                    setShow={setDeleteUser}
+                    dataDeleteUser={dataDeleteUser}
                 />
             </div>
 

@@ -2,7 +2,7 @@
 
 const TableUser = (props)=>{
 
-    const {listUser, handleUpdateUser} = props
+    const {listUser, handleUpdateUser,handelDeleteUser} = props
 
 
 
@@ -34,7 +34,9 @@ const TableUser = (props)=>{
                                 <button className="btn border-info">View</button>
                                 <button className="btn border-warning mx-3" 
                                 onClick={()=>handleUpdateUser(item)}>Update</button>
-                                <button className="btn border-danger">Delete</button>
+                                <button className="btn border-danger" 
+                                
+                                onClick={()=>handelDeleteUser(item)}>Delete</button>
                             </td>      
                         </tr>
                     )
