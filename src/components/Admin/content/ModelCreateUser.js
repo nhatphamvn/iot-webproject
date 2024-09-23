@@ -32,6 +32,7 @@ const ModelCreateUser=(props)=> {
   const [image,SetImage] = useState("")
   const [previewImage,SetPreImage] =useState("")
 
+  //load File
   const handleUploadFile=(e)=>{
     if(e.target && e.target.files && e.target.files[0]){
 
@@ -69,8 +70,6 @@ const ModelCreateUser=(props)=> {
 
         const data = await ApiCreateNewUser(email,password,username,role,image)
 
-        console.log('res >>>>',data);
-
         if(data && data.EC === 0){
           toast.success(data.EM)
           handleClose()
@@ -98,23 +97,6 @@ const ModelCreateUser=(props)=> {
         <Modal.Body>
             <form className="row g-3">
                 <div className="col-md-6">
-                    <label className="form-label">Username</label>
-                    <input type="text"
-                    className="form-control"
-                    value={username}
-                    onChange={(e)=> setUsername(e.target.value)}
-                    />
-                </div>
-                   <div className="col-md-6">
-                    <label className="form-label">Role</label>
-                  <select className="form-select"
-                    onChange={(e)=> setRole(e.target.value)}                    
-                    >
-                    <option selected value="USER">USER</option>
-                    <option value="ADMIN">ADMIN</option>
-                    </select>
-                </div>
-                <div className="col-md-6">
                     <label className="form-label">Email</label>
                     <input type="email"
                     className="form-control"
@@ -128,6 +110,23 @@ const ModelCreateUser=(props)=> {
                     value={password}
                     onChange={(e)=> setPassword(e.target.value)}
                     />
+                </div>
+                     <div className="col-md-6">
+                    <label className="form-label">Username</label>
+                    <input type="text"
+                    className="form-control"
+                    value={username}
+                    onChange={(e)=> setUsername(e.target.value)}
+                    />
+                </div>
+                <div className="col-md-6">
+                    <label className="form-label">Role</label>
+                  <select className="form-select"
+                    onChange={(e)=> setRole(e.target.value)}                    
+                    >
+                    <option selected value="USER">USER</option>
+                    <option value="ADMIN">ADMIN</option>
+                    </select>
                 </div>
              
                  <div className="col-md-12">

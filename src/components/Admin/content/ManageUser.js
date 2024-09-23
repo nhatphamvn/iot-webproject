@@ -2,20 +2,23 @@ import ModelCreateUser from "./ModelCreateUser"
 import './ManagaUser.scss'
 import TableUser from "./TableUser"
 import { useEffect, useState } from "react"
-import { getApiUserAll } from "../../../service/ApiCreateNewUser"
+import { getApiPageUser, getApiUserAll } from "../../../service/ApiCreateNewUser"
 import ModelUpdateUser from "./ModelUpdateUser"
 import ModelDeleteUser from "./ModelDeleteUser"
-const ManageUser =(props)=>{
+import TableReactPaginate from "./TableReactPaginate"
 
+const ManageUser =(props)=>{
+    const LIMIT_USERS = 6;
     const [showModelUser,SetShowModelUser] = useState(false);
     const [showUpdateUser,SetShowUpdateUser] = useState(false)
     const [showDeleteUser,setDeleteUser] = useState(false)
     const [listUser,setListUser] = useState([]);
     const [dataUpdate,setDataUpdate] = useState({})
     const [dataDeleteUser,setDataDelete] = useState({});
-
+    const [countPage,setCountPage]= useState(0)
     useEffect(()=>{
-       fecthData();
+    //    fecthData();
+        fecthDataByPage(1)
         
     },[])
 
@@ -25,6 +28,20 @@ const ManageUser =(props)=>{
         
         if(res.EC === 0){
             setListUser(res.DT)
+        }
+
+
+    }
+    
+    const fecthDataByPage=async(page)=>{
+       let res = await getApiPageUser(page,LIMIT_USERS);
+        console.log(res);
+        
+        if(res.EC === 0){
+            console.log('fecth page',res.DT);
+            
+            setListUser(res.DT.users)
+            setCountPage(res.DT.totalPages)
         }
 
 
@@ -61,10 +78,13 @@ const ManageUser =(props)=>{
 
                 </div>
                 <div className="">
-                    <TableUser 
+                    <TableReactPaginate 
                     handelDeleteUser={handelDeleteUser}
                     handleUpdateUser={handleUpdateUser}
-                    listUser={listUser}/>
+                    listUser={listUser}
+                    fecthDataByPage={fecthDataByPage}
+                    countPage={countPage}
+                    />
                 </div>
 
                 <ModelCreateUser

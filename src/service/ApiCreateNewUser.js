@@ -32,11 +32,15 @@ const getApiUserAll =()=>{
         return axios.get('api/v1/participant/all')
 
 }
+const getApiPageUser =(page,limit)=>{
+        return axios.get(`api/v1/participant?page=${page}&limit=${limit}`)
+
+}
 
 const deleteApiUser =(userId)=>{
         return axios.delete('api/v1/participant', {data: {id : userId}})
 
 }
 export {
-    ApiCreateNewUser,getApiUserAll,ApiPutNewUser,deleteApiUser
+    ApiCreateNewUser,getApiUserAll,ApiPutNewUser,deleteApiUser,getApiPageUser
 }
