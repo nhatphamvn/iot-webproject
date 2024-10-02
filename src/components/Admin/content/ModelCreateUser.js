@@ -73,7 +73,8 @@ const ModelCreateUser=(props)=> {
         if(data && data.EC === 0){
           toast.success(data.EM)
           handleClose()
-          await props.fetchData()
+          props.setCurrentPage(1)
+          await props.fecthDataByPage(1)
         }
         if(data && data.EC !== 0){
           toast.error(data.EM)

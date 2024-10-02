@@ -8,8 +8,9 @@ import ModelDeleteUser from "./ModelDeleteUser"
 import TableReactPaginate from "./TableReactPaginate"
 
 const ManageUser =(props)=>{
-    const LIMIT_USERS = 6;
+    const LIMIT_USERS = 1;
     const [showModelUser,SetShowModelUser] = useState(false);
+    const [currentPage,setCurrentPage] = useState(1)
     const [showUpdateUser,SetShowUpdateUser] = useState(false)
     const [showDeleteUser,setDeleteUser] = useState(false)
     const [listUser,setListUser] = useState([]);
@@ -84,6 +85,8 @@ const ManageUser =(props)=>{
                     listUser={listUser}
                     fecthDataByPage={fecthDataByPage}
                     countPage={countPage}
+                    currentPage={currentPage}
+                    setCurrentPage={setCurrentPage}
                     />
                 </div>
 
@@ -91,6 +94,9 @@ const ManageUser =(props)=>{
                     show={showModelUser}
                     setShow={SetShowModelUser}
                     fetchData={fecthData}
+                    fecthDataByPage={fecthDataByPage}
+                    currentPage={currentPage}
+                    setCurrentPage={setCurrentPage}
                 />
 
                 <ModelUpdateUser 
@@ -99,14 +105,19 @@ const ManageUser =(props)=>{
                     dataUpdate={dataUpdate}
                     fetchData={fecthData}
                     resetUpdateData={resetUpdateData}
-
+                    fecthDataByPage={fecthDataByPage}
+                    currentPage={currentPage}
+                    setCurrentPage={setCurrentPage}
                 />
 
                 <ModelDeleteUser
                     show={showDeleteUser}
                     setShow={setDeleteUser}
                     dataDeleteUser={dataDeleteUser}
-                     fetchData={fecthData}
+                    fetchData={fecthData}
+                    fecthDataByPage={fecthDataByPage}
+                    currentPage={currentPage}
+                    setCurrentPage={setCurrentPage}
                 />
             </div>
 
