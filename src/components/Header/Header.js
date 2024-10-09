@@ -1,9 +1,17 @@
 import Container from 'react-bootstrap/Container';
 import Nav from 'react-bootstrap/Nav';
 import Navbar from 'react-bootstrap/Navbar';
-import NavDropdown from 'react-bootstrap/NavDropdown';
-import { NavLink } from 'react-router-dom';
-const Header=()=> {
+// import NavDropdown from 'react-bootstrap/NavDropdown';
+import { NavLink, useNavigate } from 'react-router-dom';
+
+const Header = () => {
+  const navigate = useNavigate(); // Sử dụng useNavigate thay cho useNavigation
+
+  const handleLogin = () => {
+    navigate('/login'); // Điều hướng đến trang login
+  };
+
+
   return (
     <Navbar expand="lg" className="bg-body-tertiary">
       <Container>
@@ -19,7 +27,7 @@ const Header=()=> {
     
           </Nav>
         <Nav>
-          <button className='btn-button btn-login'>Log In</button>
+          <button className='btn-button btn-login'onClick={()=>handleLogin()}>Log In</button>
           <button className='btn-button btn-logout'>Sign Up</button>
             {/* <NavDropdown title="Setting" id="basic-nav-dropdown">
               <NavDropdown.Item >Sign In</NavDropdown.Item>
