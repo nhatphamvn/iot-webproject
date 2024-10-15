@@ -12,7 +12,7 @@
         display: flex;
         justify-content: center;
         align-items:center;
-        height: 100vh;
+        height: 90vh;
         flex-direction: column;
         width: 100%;
     
@@ -23,11 +23,12 @@
         }
         .title{
             margin-top: 50px;
-            margin-bottom: 20px;
+            margin-bottom: 10px;
             text-align: center;
         }
         .welcome{
             text-align: center;
+            margin-bottom: 5px;
         }
         .content-form{
             display: flex;
@@ -59,12 +60,14 @@
                 color: white;
                 border: none;
                 border-radius: 3px;
-                padding: 7px 75px;
+                padding: 7px;
+                width: 247px;
+               
             }
 
         }
         .divider {
-            margin: 20px 0; // Khoảng cách trên và dưới
+            margin: 10px 0; // Khoảng cách trên và dưới
 
             &::before,
             &::after {
@@ -75,6 +78,26 @@
 
        
         }
+        .login-other{
+            text-align: center;
+            margin-bottom: 15px;
+            button{
+                position: relative;
+                text-align: center;
+                padding: 6px;
+                width: 245px;
+                cursor: pointer;
+                background-color: white;
+                border: 1px solid;
+                .icon-button{
+                    position: absolute;
+                    left: 10px;
+                    top: 50%;
+                    transform: translateY(-50%);
+                    font-size: 20px;
+                }
+            }
+            }
 
     }
 // }

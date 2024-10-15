@@ -8,15 +8,13 @@ import {
     SidebarFooter,
     SidebarContent,
 } from 'react-pro-sidebar';
-
-import { FaTachometerAlt, FaGem, FaList, FaGithub, FaRegLaughWink, FaHeart } from 'react-icons/fa';
 import sidebarBg from '../../assets/img-sidebar.jpg';
 import { BiBookReader } from "react-icons/bi";
 import { FaAngleDown } from "react-icons/fa";
 import { Link } from 'react-router-dom';
 
 const Sidebar = (props) => {
-    const { image, collapsed, toggled, handleToggleSidebar } = props;
+    const { collapsed, toggled, handleToggleSidebar } = props;
     return (
         <>
             <ProSidebar
@@ -40,9 +38,11 @@ const Sidebar = (props) => {
                             whiteSpace: 'nowrap',
                         }}
                     >
-                        <BiBookReader size={30} color='#FFC8FB' />
-                      
-                        Pham Van Nhat
+                    <BiBookReader size={30} color='#FFC8FB' 
+
+                    />
+              
+                    Pham Van Nhat
                     </div>
                 </SidebarHeader>
 

@@ -8,7 +8,7 @@ import ModelDeleteUser from "./ModelDeleteUser"
 import TableReactPaginate from "./TableReactPaginate"
 
 const ManageUser =(props)=>{
-    const LIMIT_USERS = 1;
+    const LIMIT_USERS = 5;
     const [showModelUser,SetShowModelUser] = useState(false);
     const [currentPage,setCurrentPage] = useState(1)
     const [showUpdateUser,SetShowUpdateUser] = useState(false)

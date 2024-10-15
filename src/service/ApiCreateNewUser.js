@@ -41,6 +41,15 @@ const deleteApiUser =(userId)=>{
         return axios.delete('api/v1/participant', {data: {id : userId}})
 
 }
+
+const postLogin =(userEmail,userPassword)=>{
+        return axios.post('api/v1/login', {email:userEmail,password:userPassword})
+}
+
+//shortcut
+// const postLogin =(email,password)=>{
+//         return axios.post('api/v1/login', {email,password})
+// }
 export {
-    ApiCreateNewUser,getApiUserAll,ApiPutNewUser,deleteApiUser,getApiPageUser
+    ApiCreateNewUser,getApiUserAll,ApiPutNewUser,deleteApiUser,getApiPageUser,postLogin
 }
