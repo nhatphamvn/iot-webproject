@@ -10,6 +10,9 @@ const Header = () => {
   const handleLogin = () => {
     navigate('/login'); // Điều hướng đến trang login
   };
+  const handleSignUp=()=>{
+    navigate('/signup')
+  }
 
 
   return (
@@ -28,7 +31,7 @@ const Header = () => {
           </Nav>
         <Nav>
           <button className='btn-button btn-login'onClick={()=>handleLogin()}>Log In</button>
-          <button className='btn-button btn-logout'>Sign Up</button>
+          <button className='btn-button btn-logout' onClick={()=>handleSignUp()}>Sign Up</button>
             {/* <NavDropdown title="Setting" id="basic-nav-dropdown">
               <NavDropdown.Item >Sign In</NavDropdown.Item>
               <NavDropdown.Item >Sign Out</NavDropdown.Item>

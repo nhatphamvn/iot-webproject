@@ -45,11 +45,14 @@ const deleteApiUser =(userId)=>{
 const postLogin =(userEmail,userPassword)=>{
         return axios.post('api/v1/login', {email:userEmail,password:userPassword})
 }
+const createSignUp =(username,email,password)=>{
+        return axios.post('api/v1/register',{username,email,password})
+}
 
 //shortcut
 // const postLogin =(email,password)=>{
 //         return axios.post('api/v1/login', {email,password})
 // }
 export {
-    ApiCreateNewUser,getApiUserAll,ApiPutNewUser,deleteApiUser,getApiPageUser,postLogin
+    ApiCreateNewUser,getApiUserAll,ApiPutNewUser,deleteApiUser,getApiPageUser,postLogin,createSignUp
 }

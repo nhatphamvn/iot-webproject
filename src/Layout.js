@@ -8,6 +8,7 @@ import Dashboard from './components/Admin/content/Dashboard';
 import ManageUser from './components/Admin/content/ManageUser';
 import Login from './components/Auth/Login';
 import { ToastContainer, toast ,Bounce} from 'react-toastify';
+import SignUp from './components/Auth/SignUp';
 
 
 const Layout = () => {
@@ -30,6 +31,7 @@ const Layout = () => {
 
       
       <Route path="/login" element={<Login />}/>
+       <Route path="/signup" element={<SignUp />}/>
 
     </Routes>
    
