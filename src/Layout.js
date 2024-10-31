@@ -9,6 +9,7 @@ import ManageUser from './components/Admin/content/ManageUser';
 import Login from './components/Auth/Login';
 import { ToastContainer, toast ,Bounce} from 'react-toastify';
 import SignUp from './components/Auth/SignUp';
+import Iot from './components/Iot/Iot';
 
 
 const Layout = () => {
@@ -25,6 +26,10 @@ const Layout = () => {
       <Route path="/admin" element={<Admin />}>
         <Route index element={<Dashboard />}/>
         <Route path='manage-users' element={<ManageUser />}/>
+      
+      </Route>
+        <Route path="/iot" element={<Iot />}>
+
       
       </Route>
 
