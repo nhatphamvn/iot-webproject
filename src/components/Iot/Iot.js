@@ -2,6 +2,7 @@ import { useEffect, useState } from 'react';
 import mqtt from 'mqtt';
 import TemperatureDisplay from './TemperatureDisplay';
 import HumidityDisplay from './HumidityDisplay';
+import TemperatureChart from "./TemperatureChart";
 import './Iot.css'
 
 const Iot = () => {
@@ -31,7 +32,8 @@ const Iot = () => {
                 console.log('Received message:', payload);
 
                 const data = JSON.parse(payload);
-                setTemperature(data.temperature);
+                setTemperature((prev) => [...prev.slice(-29), data.temperature]);
+                // setTemperature(data.temperature);
                 setHumidity(data.humidity);
             }
         });
@@ -59,6 +61,7 @@ const Iot = () => {
                 <TemperatureDisplay temperature={temperature} />
                 <HumidityDisplay humidity={humidity} />
             </div>
+            <TemperatureChart temperature={temperature} /> {/* Biểu đồ xuống dưới */}
         </div>
     );
 }
