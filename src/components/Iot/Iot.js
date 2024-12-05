@@ -3,6 +3,7 @@ import mqtt from 'mqtt';
 import TemperatureDisplay from './TemperatureDisplay';
 import HumidityDisplay from './HumidityDisplay';
 import TemperatureChart from "./TemperatureChart";
+import HumidityChart from './HumidityChart';
 import './Iot.css'
 
 const Iot = () => {
@@ -57,12 +58,20 @@ const Iot = () => {
         <div className='main-container'>
             <h2>Temperature & Humidity</h2>
             {connected ? <p>Connected to broker!</p> : <p>Disconnected from broker</p>}
-            <div style={{ display: 'flex', gap: '20px' }}>
+
+            {/* Phần hiển thị nhiệt độ và độ ẩm */}
+            <div style={{ display: 'flex', gap: '675px', justifyContent: 'center', width: '100%' }}>
                 <TemperatureDisplay temperature={temperature} />
                 <HumidityDisplay humidity={humidity} />
             </div>
-            <TemperatureChart temperature={temperature} /> {/* Biểu đồ xuống dưới */}
+
+            {/* Phần hiển thị biểu đồ nhiệt độ và độ ẩm */}
+            <div style={{ display: 'flex', gap: '40px', justifyContent: 'center', width: '100%' }}>
+                <TemperatureChart temperature={temperature} />
+                <HumidityChart humidity={humidity} />
+            </div>
         </div>
+
     );
 }
 
