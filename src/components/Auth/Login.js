@@ -5,7 +5,10 @@ import { toast } from 'react-toastify';
 import {  useNavigate } from 'react-router-dom';
 import { FaGoogle } from "react-icons/fa";
 import { FaFacebookF } from "react-icons/fa";
+import { useDispatch } from 'react-redux';
+import { doLogin } from '../../redux/action/accountAction';
 const Login = () => {
+  const dispatch = useDispatch()
   const [email,setEmail]= useState("");
   const [password,setPassword] =useState("")
   
@@ -14,6 +17,7 @@ const Login = () => {
     const data = await postLogin(email,password)
 
     if(data&& data.EC === 0){
+      dispatch(doLogin(data))
       toast.success(data.EM)
       navigate('/');
     }
