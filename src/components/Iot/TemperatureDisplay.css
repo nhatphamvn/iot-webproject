@@ -1,0 +1,41 @@
+.temperature-widget {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    font-family: Arial, sans-serif;
+}
+
+.temperature-circle {
+    position: relative;
+    width: 120px;
+    height: 120px;
+    border-radius: 50%;
+    background: #ccc;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+}
+
+.temperature-fill {
+    width: 100%;
+    height: 100%;
+    border-radius: 50%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.temperature-value {
+    position: absolute;
+    font-size: 1.5em;
+    font-weight: bold;
+    color: #333;
+}
+
+.temperature-label {
+    margin-top: 8px;
+    font-size: 0.9em;
+    font-weight: bold;
+    color: #555;
+}

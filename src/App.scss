@@ -1,4 +1,5 @@
 body {
+  box-sizing: border-box;
   padding: 0;
   margin: 0;
   font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', 'Roboto', 'Oxygen',
@@ -6,4 +7,55 @@ body {
     sans-serif;
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
+}
+
+
+.app-container{
+  
+    .app-header{
+      
+      .navbar{
+        width: 100%;
+        padding-top: 20px;
+        position: fixed;
+        z-index: 1000;
+        background-color: rgba(0,0,0,0) !important;
+      }
+      .btn-button{
+        padding: 5px 10px;
+        margin-right: 15px;
+        border: 2px solid;
+        font-weight: 600;
+        height: 40px;
+      }
+      .btn-login{
+        border: none;
+        background: none;
+ 
+      }
+      .btn-logout{
+        background-color: black;
+        border-radius: 10px;
+        border: none;
+        color: #fff;
+        &:hover{
+          background-color: rgb(64, 58, 58);
+        }
+      }
+
+      .navbar-nav{
+          .nav-link{
+            &.active{
+              color: rgb(72, 72, 239);
+            }
+          }
+      }
+
+    }
+    .main-container{
+      .app-content{
+        padding-top: 90px;
+      }
+    }
+
 }

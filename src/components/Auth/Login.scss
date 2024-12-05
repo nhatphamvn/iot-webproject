@@ -1,0 +1,105 @@
+
+// body{
+//     box-sizing: border-box;
+//     margin: 0;
+//     padding: 0;
+//     display: flex;
+//     justify-content: center;
+//     align-items: flex-start;
+//     height: 100vh;
+
+    .login-container{
+        display: flex;
+        justify-content: center;
+        align-items:center;
+        height: 90vh;
+        flex-direction: column;
+        width: 100%;
+    
+        .header{
+                position: absolute;
+                top: 0;
+                right: 0;
+        }
+        
+
+        .title{
+            margin-top: 50px;
+            margin-bottom: 10px;
+            text-align: center;
+        }
+        .welcome{
+            text-align: center;
+            margin-bottom: 5px;
+        }
+        .content-form{
+            display: flex;
+            flex-direction: column;
+    
+            .form-login{
+                display: flex;
+                flex-direction: column; // Xếp label trên input
+                padding: 10px;
+                .form-input{
+                    margin-top: 10px;
+                    padding: 5px 30px;
+                }
+            }
+            
+          
+        }
+        .form-forget {
+            margin-top: 10px; // Khoảng cách trên
+            position: relative; // Thiết lập position để có thể sử dụng left
+            left: -60px; // Dịch chuyển sang trái 10px
+
+        }
+        .login-button{
+            text-align: center;
+            margin-top:20px ;
+            button{
+                background-color: black;
+                color: white;
+                border: none;
+                border-radius: 3px;
+                padding: 7px;
+                width: 247px;
+               
+            }
+
+        }
+        .divider {
+            margin: 10px 0; // Khoảng cách trên và dưới
+
+            &::before,
+            &::after {
+                content: "----------------"; // Tạo đường kẻ
+                flex: 1; // Để đường kẻ chiếm không gian bên trái và bên phải
+                margin: 0 10px; // Khoảng cách giữa đường kẻ và chữ "OR"
+            }
+
+       
+        }
+        .login-other{
+            text-align: center;
+            margin-bottom: 15px;
+            button{
+                position: relative;
+                text-align: center;
+                padding: 6px;
+                width: 245px;
+                cursor: pointer;
+                background-color: white;
+                border: 1px solid;
+                .icon-button{
+                    position: absolute;
+                    left: 10px;
+                    top: 50%;
+                    transform: translateY(-50%);
+                    font-size: 20px;
+                }
+            }
+            }
+
+    }
+// }
