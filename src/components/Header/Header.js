@@ -26,7 +26,7 @@ const Header = () => {
   return (
     <Navbar expand="lg" className="bg-body-tertiary">
       <Container>
-        <NavLink to="/" className='navbar-brand'>Pham Van Nhat</NavLink>
+        <NavLink to="/" className='navbar-brand'>NhatThanh</NavLink>
         <Navbar.Toggle aria-controls="basic-navbar-nav" />
         <Navbar.Collapse id="basic-navbar-nav">
           <Nav className="me-auto">

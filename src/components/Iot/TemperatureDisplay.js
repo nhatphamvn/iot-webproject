@@ -1,7 +1,7 @@
-import React from 'react';
-import './TemperatureDisplay.css';
+import React from "react";
+import "./TemperatureDisplay.css";
 
-const TemperatureDisplay = ({ temperature }) => {
+const TemperatureWidget = ({ temperature }) => {
     const maxTemperature = 50; // Ngưỡng nhiệt độ tối đa cho biểu đồ
 
     return (
@@ -13,7 +13,7 @@ const TemperatureDisplay = ({ temperature }) => {
                         background: `conic-gradient(#FF6347 ${Math.min(
                             (temperature / maxTemperature) * 100,
                             100
-                        )}%, #ccc ${Math.min((temperature / maxTemperature) * 100, 100)}%)`
+                        )}%, #ccc 0%)`,
                     }}
                 ></div>
                 <div className="temperature-value">{temperature}°C</div>
@@ -21,6 +21,6 @@ const TemperatureDisplay = ({ temperature }) => {
             <div className="temperature-label">Temperature</div>
         </div>
     );
-}
+};
 
-export default TemperatureDisplay;
+export default TemperatureWidget;

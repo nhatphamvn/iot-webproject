@@ -1,7 +1,7 @@
 import React from 'react';
 import './HumidityDisplay.css';
 
-const HumidityDisplay = ({ humidity }) => {
+const HumidityWidget = ({ humidity }) => {
     return (
         <div className="humidity-widget">
             <div className="humidity-label">Humidity</div>
@@ -14,6 +14,6 @@ const HumidityDisplay = ({ humidity }) => {
             <div className="humidity-value">{humidity}%</div>
         </div>
     );
-}
+};
 
-export default HumidityDisplay;
+export default HumidityWidget;
